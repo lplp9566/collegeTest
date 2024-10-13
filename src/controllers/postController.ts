@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Post, { IComment, IPost } from "../models/postModel";
+import Post, { IComment, IPost } from "../models/classModel";
 import User, { IUser } from "../models/userModel";
 import { ResponseStructure } from "../types/response";
 
