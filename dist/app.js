@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const teacherRoutes_1 = __importDefault(require("./routes/teacherRoutes"));
+const studentsRouter_1 = __importDefault(require("./routes/studentsRouter"));
 // import userRouter from "./routes/userRoutes";
 const errorHandler_1 = require("./middleware/errorHandler");
 const db_1 = __importDefault(require("./config/db"));
@@ -20,6 +21,7 @@ app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.def
 (0, db_1.default)();
 // Routes
 app.use("/teacher", teacherRoutes_1.default);
+app.use("/student", studentsRouter_1.default);
 // app.use("/api/users", teacherRouter);
 // Error handling middleware
 app.use(errorHandler_1.errorHandler);
