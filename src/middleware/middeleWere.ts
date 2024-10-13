@@ -12,15 +12,15 @@ dotenv.config();
 const SECRET_KEY: string = process.env.SECRET_KEY || "your_secret_key_here";
 
 export const createToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  const id = req.body.id;
+  const email = req.body.email;
   const password:string = req.body.password;
 
 
-  if (!id) {
+  if (!email) {
     res.status(400).json({ error: "User ID is required to create a token." });
     return;
   }
-  const findUser = await studentModel.findOne({_id :id})|| await teacherModel.findOne({_id :id})
+  const findUser = await studentModel.findOne({email:email})|| await teacherModel.findOne({email :email})
   console.log(findUser)
   if(!findUser){
     res.status(402).json({error:"user not find"})
@@ -31,21 +31,19 @@ export const createToken = async (req: Request, res: Response, next: NextFunctio
   // }
   
 
-  const token = jwt.sign({ id }, SECRET_KEY, { expiresIn: "1h" });
+  const token = jwt.sign({email }, SECRET_KEY, { expiresIn: "1h" });
   
   res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
   
 
   req.body.token = token; 
   res.status(200).json({ message: "Token created and set in cookie." ,token:token});
-  
   next(); 
 };
 
 
 
 export const findUserByToken = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  
     if (!req.cookies) {
       res.status(401).json({ error: "No cookies found.", success: false });
       return;

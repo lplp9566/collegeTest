@@ -20,13 +20,13 @@ const teacherModel_1 = __importDefault(require("../models/teacherModel"));
 dotenv_1.default.config();
 const SECRET_KEY = process.env.SECRET_KEY || "your_secret_key_here";
 const createToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const id = req.body.id;
+    const email = req.body.email;
     const password = req.body.password;
-    if (!id) {
+    if (!email) {
         res.status(400).json({ error: "User ID is required to create a token." });
         return;
     }
-    const findUser = (yield studentsModel_1.default.findOne({ _id: id })) || (yield teacherModel_1.default.findOne({ _id: id }));
+    const findUser = (yield studentsModel_1.default.findOne({ email: email })) || (yield teacherModel_1.default.findOne({ email: email }));
     console.log(findUser);
     if (!findUser) {
         res.status(402).json({ error: "user not find" });
@@ -35,7 +35,7 @@ const createToken = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
     // if(!await bcrypt.compare(password , findUser.password)){
     //   res.status(401).json({error:"invalid password"})
     // }
-    const token = jsonwebtoken_1.default.sign({ id }, SECRET_KEY, { expiresIn: "1h" });
+    const token = jsonwebtoken_1.default.sign({ email }, SECRET_KEY, { expiresIn: "1h" });
     res.cookie('token', token, { httpOnly: true, secure: process.env.NODE_ENV === 'production' });
     req.body.token = token;
     res.status(200).json({ message: "Token created and set in cookie.", token: token });
@@ -43,6 +43,7 @@ const createToken = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 });
 exports.createToken = createToken;
 const findUserByToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.cookies);
     if (!req.cookies) {
         res.status(401).json({ error: "No cookies found.", success: false });
         return;

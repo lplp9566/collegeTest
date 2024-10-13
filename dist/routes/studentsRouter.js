@@ -8,7 +8,7 @@ const studentRouter = (0, express_1.Router)();
  * @swagger
  * /student/register:
  *   post:
- *     summary: Create a new teacher
+ *     summary: Create a new student
  *     requestBody:
  *                required: true
  *                content:
@@ -36,9 +36,9 @@ const studentRouter = (0, express_1.Router)();
 studentRouter.post("/register", studentController_1.createStudent);
 /**
  * @swagger
- * /teacher/loginTeacher:
+ * /student/login:
  *   post:
- *     summary: Create a new teacher
+ *     summary: login student
  *     requestBody:
  *                required: true
  *                content:
@@ -56,5 +56,15 @@ studentRouter.post("/register", studentController_1.createStudent);
  *       201:
  *         description: A JSON of the created user
  */
-studentRouter.post("/loginTeacher", middeleWere_1.createToken);
+studentRouter.post("/login", middeleWere_1.createToken);
+/**
+ * @swagger
+ * /student/allGrads:
+ *  get:
+ *      summary: get the greeds
+ *      responses:
+ *          200:
+ *              description: get all greeds
+ */
+studentRouter.get("/allGrads", middeleWere_1.findUserByToken, studentController_1.getStudentGrads);
 exports.default = studentRouter;

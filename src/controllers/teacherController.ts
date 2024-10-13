@@ -39,3 +39,5 @@ export const getStudentsFromClass = async  (req:Request,res:Response,next:NextFu
         
     }
 }
+
+export const addGread = async 

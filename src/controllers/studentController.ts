@@ -21,5 +21,20 @@ export const createStudent = async (req:Request,res:Response,next:NextFunction)=
     }
 }
 
+export const getStudentGrads = async (req:Request,res:Response,next:NextFunction)=>{
+
+    const StudentId = req.body.user.id;
+    try {
+        const student = await Student.findById(StudentId)
+        const greeds = student?.grades
+        res.status(200).json({greeds: greeds})
+
+    } catch (error) {
+     next(error)
+    }
+};
+
+
+
 
 

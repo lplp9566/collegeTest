@@ -40,7 +40,7 @@ const studentRouter = Router();
 studentRouter.post("/register",createStudent);
 /**
  * @swagger
- * /teacher/loginTeacher:
+ * /student/login:
  *   post:  
  *     summary: login student
  *     requestBody:
@@ -60,9 +60,17 @@ studentRouter.post("/register",createStudent);
  *       201:               
  *         description: A JSON of the created user
  */
-studentRouter.post("/loginTeacher",createToken );
-
-studentRouter.get("/allGrads",getStudentGrads)
+studentRouter.post("/login",createToken );
+/**
+ * @swagger
+ * /student/allGrads:
+ *  get:
+ *      summary: get the greeds 
+ *      responses:
+ *          200:
+ *              description: get all greeds
+ */
+studentRouter.get("/allGrads" ,findUserByToken,getStudentGrads)
 
 
 
