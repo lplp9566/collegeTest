@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getStudentsFromClass = exports.createTeacher = void 0;
+exports.addGread = exports.getStudentsFromClass = exports.createTeacher = void 0;
 const classModel_1 = __importDefault(require("../models/classModel"));
 const studentsModel_1 = __importDefault(require("../models/studentsModel"));
 const teacherModel_1 = __importDefault(require("../models/teacherModel"));
@@ -39,7 +39,7 @@ const createTeacher = (req, res, next) => __awaiter(void 0, void 0, void 0, func
 exports.createTeacher = createTeacher;
 const getStudentsFromClass = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const teacher = req.body.id;
+        const teacher = req.body.user.id;
         const student = yield classModel_1.default.findOne({ teacher: teacher }).populate({
             path: "students",
             select: "fullName,grades "
@@ -51,3 +51,10 @@ const getStudentsFromClass = (req, res, next) => __awaiter(void 0, void 0, void 
     }
 });
 exports.getStudentsFromClass = getStudentsFromClass;
+const addGread = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+    }
+    catch (error) {
+    }
+});
+exports.addGread = addGread;

@@ -62,7 +62,16 @@ teacherRouter.post("/register",createTeacher);
 teacherRouter.post("/loginTeacher",createToken );
 
 teacherRouter.put("/addGrade", );
-teacherRouter.get("/getAllStudents",getStudentsFromClass );
+/**
+ * @swagger
+ * /teacher/getAllStudents:
+ *  get:
+ *      summary: get the greeds 
+ *      responses:
+ *          200:
+ *              description: A JSON of the created user
+ */
+teacherRouter.get("/getAllStudents",findUserByToken, getStudentsFromClass );
 teacherRouter.post("/editGrade", );
 
 

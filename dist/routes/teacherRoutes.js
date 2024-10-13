@@ -58,6 +58,15 @@ teacherRouter.post("/register", teacherController_1.createTeacher);
  */
 teacherRouter.post("/loginTeacher", middeleWere_1.createToken);
 teacherRouter.put("/addGrade");
-teacherRouter.get("/getAllStudents", teacherController_1.getStudentsFromClass);
+/**
+ * @swagger
+ * /teacher/getAllStudents:
+ *  get:
+ *      summary: get the greeds
+ *      responses:
+ *          200:
+ *              description: A JSON of the created user
+ */
+teacherRouter.get("/getAllStudents", middeleWere_1.findUserByToken, teacherController_1.getStudentsFromClass);
 teacherRouter.post("/editGrade");
 exports.default = teacherRouter;

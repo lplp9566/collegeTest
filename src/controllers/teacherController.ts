@@ -27,7 +27,7 @@ export const createTeacher = async (req:Request,res:Response,next:NextFunction)=
 
 export const getStudentsFromClass = async  (req:Request,res:Response,next:NextFunction)=>{
     try {
-        const teacher : string | undefined = req.body.id;
+        const teacher : string | undefined = req.body.user.id;
         const student = await Class.findOne({teacher:teacher}).populate({
             path:"students",
             select: "fullName,grades "
@@ -44,7 +44,7 @@ export const addGread = async (req:Request,res:Response,next:NextFunction)=>{
 
     try {
         
-        
+
     } catch (error) {
         
     }

@@ -43,7 +43,6 @@ const createToken = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 });
 exports.createToken = createToken;
 const findUserByToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.cookies);
     if (!req.cookies) {
         res.status(401).json({ error: "No cookies found.", success: false });
         return;
@@ -55,7 +54,7 @@ const findUserByToken = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
     }
     try {
         const decoded = jsonwebtoken_1.default.verify(token, SECRET_KEY);
-        const user = (yield studentsModel_1.default.findById(decoded.id)) || (yield teacherModel_1.default.findById(decoded.id));
+        const user = (yield studentsModel_1.default.findOne({ email: decoded.email })) || (yield teacherModel_1.default.findOne({ email: decoded.email }));
         if (!user) {
             res.status(404).json({ error: "User not found.", success: false });
             return;

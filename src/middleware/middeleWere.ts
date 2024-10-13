@@ -57,9 +57,9 @@ export const findUserByToken = async (req: Request, res: Response, next: NextFun
     }
 
     try {
-      const decoded = jwt.verify(token, SECRET_KEY) as { id: string };
+      const decoded = jwt.verify(token, SECRET_KEY) as { email: string };
 
-      const user = await studentModel.findById(decoded.id)||await teacherModel.findById(decoded.id)
+      const user = await studentModel.findOne({email: decoded.email})||await teacherModel.findOne({email: decoded.email})
       if (!user) {
         res.status(404).json({ error: "User not found.", success: false });
       

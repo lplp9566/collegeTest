@@ -12,6 +12,7 @@ const errorHandler_1 = require("./middleware/errorHandler");
 const db_1 = __importDefault(require("./config/db"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_1 = require("./swagger");
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express_1.default.json());
 app.use('/swagger', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_1.swaggerSpec));
 (0, db_1.default)();
+app.use((0, cookie_parser_1.default)());
 // Routes
 app.use("/teacher", teacherRoutes_1.default);
 app.use("/student", studentsRouter_1.default);
