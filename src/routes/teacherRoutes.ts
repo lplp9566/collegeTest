@@ -61,26 +61,26 @@ teacherRouter.post("/register",createTeacher);
  *         description: A JSON of the created user
  */
 teacherRouter.post("/loginTeacher",createToken );
-/**
- * @swagger
- * /teacher/addGrade:
- * post:
- *   summary: Add grade
- *   requestBody:
- *                required: true
- *                content:
- *                  application/json:
- *                    schema:
- *                      studentId
- *                      type: string
- *                      grade:
- *                      type:object
- *                        grade: number
- *                        commend: string 
- * responses:
- *      201:
- *         description: A JSON of the created user
- */
+// /**
+//  * @swagger
+//  * /teacher/addGrade:
+//  * post:
+//  *   summary: Add grade
+//  *   requestBody:
+//  *                required: true
+//  *                content:
+//  *                  application/json:
+//  *                    schema:
+//  *                      studentId
+//  *                      type: string
+//  *                      grade:
+//  *                      type:object
+//  *                        grade: number
+//  *                        commend: string 
+//  * responses:
+//  *      201:
+//  *         description: A JSON of the created user
+//  */
 
 
 

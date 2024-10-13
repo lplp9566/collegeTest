@@ -54,10 +54,12 @@ export const addGread = async (req:Request,res:Response,next:NextFunction)=>{
             throw new Error("teacher not found");
         } 
         student.grades.push(req.body.grade)
+        res.status(201).json({student})
         }  
+       
 
 
      catch (error) {
-        
+        next(error)
     }
 }

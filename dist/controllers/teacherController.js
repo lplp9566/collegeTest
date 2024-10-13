@@ -64,6 +64,7 @@ const addGread = (req, res, next) => __awaiter(void 0, void 0, void 0, function*
             throw new Error("teacher not found");
         }
         student.grades.push(req.body.grade);
+        res.status(201).json({ student });
     }
     catch (error) {
     }
