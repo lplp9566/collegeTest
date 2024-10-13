@@ -1,8 +1,8 @@
+"use strict";
 // import { Request, Response, NextFunction } from "express";
 // import Post, { IComment, IPost } from "../models/classModel";
 // import User, { IUser } from "../models/studentsModel";
 // import { ResponseStructure } from "../types/response";
-
 // // Create a new post
 // export const createPost = async (
 //   req: Request,
@@ -16,17 +16,13 @@
 //       throw new Error("can't find user");
 //     }
 //     const post: IPost = await Post.create({title,content,author});
-
 //     user.posts.push(post._id);
 //     await user.save();
-
 //     res.status(201).json(new ResponseStructure(true,post))
-
 //   } catch (error) {
 //     next(error)
 //   }
 // };
-
 // // Delete a post
 // export const deletePost = async (
 //   req: Request,
@@ -34,7 +30,6 @@
 //   next: NextFunction
 // ): Promise<void> => {
 //   try {
-    
 //     const post:IPost | null = await Post.findByIdAndDelete(req.params.id);
 //     if(!post){
 //       throw new Error("Post does not exist!")
@@ -46,9 +41,6 @@
 //     next(error)
 //   }
 // };
-
-
-
 // // Get all posts
 // export const getPosts = async (
 //   req: Request,
@@ -71,8 +63,6 @@
 //     next(error)
 //   }
 // };
-
-
 // // Get a single post by ID
 // export const getPost = async (
 //   req: Request,
@@ -98,8 +88,6 @@
 //     next(error)
 //   }
 // };
-
-
 // // Update a post
 // export const updatePost = async (
 //   req: Request,
@@ -128,8 +116,6 @@
 //     next(error)
 //   }
 // };
-
-
 // // Add a comment to a post
 // export const addComment = async (
 //   req: Request,
@@ -142,7 +128,6 @@
 //     if(!user){
 //       throw new Error("User does not exist!")
 //     }
-
 //     const comment: IComment = {
 //       content: content,
 //       author: user._id,
@@ -169,7 +154,4 @@
 //   } catch (error) {
 //     next(error);
 //   }
-
 // };
-
-

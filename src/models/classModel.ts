@@ -18,7 +18,8 @@ const ClassSchema = new Schema<IClass>({
 
     },
     teacher:{
-        type:Schema.Types.ObjectId,ref:"Teachers"
+        type:Schema.Types.ObjectId,ref:"Teachers",
+    
     },
     students:[{type:Schema.Types.ObjectId,ref:"Students"}]
 })

@@ -3,7 +3,9 @@ import { NextFunction, Request, Response } from "express";
 import bcrypt from "bcrypt"
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-import userModel from "../models/userModel.js";
+import studentModel from "../models/studentsModel";
+import teacherModel from "../models/teacherModel";
+
 
 dotenv.config();
 
@@ -18,15 +20,15 @@ export const createToken = async (req: Request, res: Response, next: NextFunctio
     res.status(400).json({ error: "User ID is required to create a token." });
     return;
   }
-  const findUser = await userModel.findOne({_id :id})
+  const findUser = await studentModel.findOne({_id :id})|| await teacherModel.findOne({_id :id})
   console.log(findUser)
   if(!findUser){
     res.status(402).json({error:"user not find"})
     return
   }
-  if(!await bcrypt.compare(password , findUser.password)){
-    res.status(401).json({error:"invalid password"})
-  }
+  // if(!await bcrypt.compare(password , findUser.password)){
+  //   res.status(401).json({error:"invalid password"})
+  // }
   
 
   const token = jwt.sign({ id }, SECRET_KEY, { expiresIn: "1h" });
@@ -59,7 +61,7 @@ export const findUserByToken = async (req: Request, res: Response, next: NextFun
     try {
       const decoded = jwt.verify(token, SECRET_KEY) as { id: string };
 
-      const user = await userModel.findById(decoded.id);
+      const user = await studentModel.findById(decoded.id)||await teacherModel.findById(decoded.id)
       if (!user) {
         res.status(404).json({ error: "User not found.", success: false });
       

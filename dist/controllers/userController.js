@@ -1,7 +1,7 @@
+"use strict";
 // import { NextFunction, Request, Response } from "express";
 // import User, { IUser } from "../models/studentsModel";
 // import { ResponseStructure } from "../types/response";
-
 // export const createUser = async (
 //   req: Request,
 //   res: Response,
@@ -15,7 +15,6 @@
 //     next(error);
 //   }
 // };
-
 // export const getUsers = async (
 //   req: Request,
 //   res: Response,
@@ -28,7 +27,6 @@
 //     next(error);
 //   }
 // };
-
 // export const getUser = async (
 //   req: Request,
 //   res: Response,
@@ -50,5 +48,4 @@
 //     next(error);
 //   }
 // };
-
 // // Optionally, add DELETE and EDIT functions

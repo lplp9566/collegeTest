@@ -1,8 +1,8 @@
-import { Router } from "express";
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
 // import { createUser, getUser, getUsers } from "../controllers/userController";
-
-const userRouter = Router();
-
+const userRouter = (0, express_1.Router)();
 /**
  * @swagger
  * /api/users:
@@ -38,8 +38,7 @@ const userRouter = Router();
  *       400:
  *         description: Bad request
  */
-userRouter.post("/", );
-
+userRouter.post("/");
 /**
  * @swagger
  * /api/users:
@@ -49,8 +48,7 @@ userRouter.post("/", );
  *          200:
  *              description: A JSON of all the users
  */
-userRouter.get("/", );
-
+userRouter.get("/");
 /**
  * @swagger
  * /api/users/{username}:
@@ -69,6 +67,5 @@ userRouter.get("/", );
  *       404:
  *         description: User not found
  */
-userRouter.get("/:username", );
-
-export default userRouter;
+userRouter.get("/:username");
+exports.default = userRouter;
