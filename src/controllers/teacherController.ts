@@ -43,9 +43,21 @@ export const getStudentsFromClass = async  (req:Request,res:Response,next:NextFu
 export const addGread = async (req:Request,res:Response,next:NextFunction)=>{
 
     try {
-        
+        const grade :IGrads| null = req.body.grade
+        const student = await Student.findById(req.body.studentId)
+        if (!student) {
+            throw new Error("student not found");
+        }
+        const UserId = req.body.user.id;
+        const teacher = await Teacher.findById(UserId);
+        if (!teacher) {
+            throw new Error("teacher not found");
+        } 
+        student.grades.push(req.body.grade)
+        }  
 
-    } catch (error) {
+
+     catch (error) {
         
     }
 }

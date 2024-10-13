@@ -53,6 +53,17 @@ const getStudentsFromClass = (req, res, next) => __awaiter(void 0, void 0, void 
 exports.getStudentsFromClass = getStudentsFromClass;
 const addGread = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const grade = req.body.grade;
+        const student = yield studentsModel_1.default.findById(req.body.studentId);
+        if (!student) {
+            throw new Error("student not found");
+        }
+        const UserId = req.body.user.id;
+        const teacher = yield teacherModel_1.default.findById(UserId);
+        if (!teacher) {
+            throw new Error("teacher not found");
+        }
+        student.grades.push(req.body.grade);
     }
     catch (error) {
     }
